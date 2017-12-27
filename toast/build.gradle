@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.Android_Utils'
 android {
     compileSdkVersion 26
 
@@ -33,8 +34,4 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
 
-ext {
-    GROUP_ID = "com.eson.util"
-    ARTIFACT_ID = "toast"
-    VERSION = "0.0.1"
-}
+
