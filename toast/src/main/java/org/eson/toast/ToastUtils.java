@@ -45,6 +45,12 @@ public class ToastUtils {
         show(context, getString(context, res), Toast.LENGTH_LONG);
     }
 
+    /**
+     *
+     * @param context
+     * @param content
+     * @param duration
+     */
     public static void show(Context context, String content, int duration) {
         if (toast == null) {
             toast = Toast.makeText(context, content, duration);
@@ -55,6 +61,14 @@ public class ToastUtils {
     }
 
 
+    /**
+     * 隐藏toast
+     */
+    public static void hideToast() {
+        if (toast != null) {
+            toast.cancel();
+        }
+    }
     /**
      * 根据 StringRes 获取相应的内容
      *
