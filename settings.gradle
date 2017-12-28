@@ -1,1 +1,1 @@
-include ':app', ':toast', ':log', ':time', ':navigate', ':fille'
+include ':app', ':toast', ':log', ':time', ':navigate', ':fille', ':encoding', ':share'
