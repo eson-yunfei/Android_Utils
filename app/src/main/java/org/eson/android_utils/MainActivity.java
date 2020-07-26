@@ -1,22 +1,25 @@
 package org.eson.android_utils;
 
+import android.Manifest;
+import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.shon.gson.GsonUtil;
+import com.shon.permissions.OnPermissionCallback;
+import com.shon.permissions.PermissionCheck;
+import com.shon.permissions.PermissionRequest;
 
 import org.eson.log.LogUtils;
+import org.eson.toast.ToastUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-
 
 
     @Override
@@ -26,6 +29,37 @@ public class MainActivity extends AppCompatActivity {
         LogUtils.init("Main");
         LogUtils.e("test_log");
 
+        testGsonUtil();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        testPermissions();
+    }
+
+    private void testPermissions() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            if (PermissionCheck.hasPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
+               LogUtils.e("以获取相应权限，无需申请");
+                return;
+            }
+            PermissionRequest request = new PermissionRequest(this);
+            request.requestPermissions(Manifest.permission.READ_EXTERNAL_STORAGE);
+            request.setOnRequestCallBack(new OnPermissionCallback() {
+                @Override
+                public void onRequest(boolean granted, @Nullable String[] reRequest) {
+                    if (granted) {
+                        ToastUtils.showShort(MainActivity.this, "申请权限成功");
+                    } else {
+                        ToastUtils.showShort(MainActivity.this, "申请权限失败");
+                    }
+                }
+            });
+        }
+    }
+
+    private void testGsonUtil() {
         List<String> test = new ArrayList<>();
         test.add("llll");
         test.add("ewfe");
@@ -52,10 +86,11 @@ public class MainActivity extends AppCompatActivity {
         String mapString = GsonUtil.arryToGson(map);
         LogUtils.e("mapString :" + mapString);
 
-        HashMap<String,String> mapResult = GsonUtil.fromGsonToClass(mapString,HashMap.class);
+        HashMap mapResult = GsonUtil.fromGsonToClass(mapString, HashMap.class);
         for (Object o : mapResult.entrySet()) {
             LogUtils.e("o : " + o);
         }
     }
+
 
 }

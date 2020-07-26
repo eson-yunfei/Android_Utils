@@ -1,6 +1,5 @@
 package com.shon.permissions;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 /**
@@ -10,5 +9,5 @@ import androidx.annotation.Nullable;
  * Des :
  */
 public interface OnPermissionCallback {
-    void onRequest(@NonNull boolean granted,@Nullable String[] reRequest);
+    void onRequest(boolean granted,@Nullable String[] reRequest);
 }
