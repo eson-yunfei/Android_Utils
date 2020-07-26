@@ -1,8 +1,9 @@
 package org.eson.toast;
 
 import android.content.Context;
-import android.support.annotation.StringRes;
 import android.widget.Toast;
+
+import androidx.annotation.StringRes;
 
 /**
  * Created by xiaoyunfei on 2017/12/27.

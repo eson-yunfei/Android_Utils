@@ -1,19 +1,23 @@
 package org.eson.android_utils;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 
-import org.eson.sharepre.AbsSharePrefer;
+import androidx.annotation.NonNull;
+
+import org.eson.sharepre.BasePreferences;
 
 /**
  * Created by xiaoyunfei on 2017/12/28.
  */
 
-public class TestShare extends AbsSharePrefer {
-    private static String name = "test_share";
+public class TestShare extends BasePreferences {
 
     public TestShare(@NonNull Context context) {
-        super(context, name);
+        super(context);
+    }
 
+    @Override
+    protected String getPreferencesName() {
+        return "test_share";
     }
 }

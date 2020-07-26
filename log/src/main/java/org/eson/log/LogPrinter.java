@@ -18,7 +18,7 @@ class LogPrinter {
     private static final char TOP_CORNER = '╔';
     private static final char BOTTOM_CORNER = '╚';
     private static final char CENTER_LINE = '║';
-    private static final String DIVIDER = "════════════════════════════════════════════";
+    private static final String DIVIDER = "════════════════════════════════════════════════════════════════════════════════════════";
 
     private String tag;
 
@@ -53,6 +53,7 @@ class LogPrinter {
     private String getMsg(String msg) {
 
         StringBuffer buffer = new StringBuffer();
+        buffer.append("  \n");
         buffer.append(TOP_CORNER).append(DIVIDER).append("\n");
         getDetailInfo(buffer);
         buffer.append(CENTER_LINE).append("   ").append(msg).append("\n");

@@ -1,7 +1,10 @@
 package org.eson.android_utils;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.shon.gson.GsonUtil;
 
@@ -13,6 +16,8 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,4 +57,5 @@ public class MainActivity extends AppCompatActivity {
             LogUtils.e("o : " + o);
         }
     }
+
 }
