@@ -1,1 +1,3 @@
+include ':permissions'
+include ':gson'
 include ':app', ':toast', ':log', ':time', ':navigate', ':fille', ':encoding', ':share'

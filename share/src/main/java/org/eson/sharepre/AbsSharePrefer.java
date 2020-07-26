@@ -1,5 +1,6 @@
 package org.eson.sharepre;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -17,6 +18,7 @@ public abstract class AbsSharePrefer {
     protected SharedPreferences sharedPreferences;
     protected SharedPreferences.Editor editor;
 
+    @SuppressLint("CommitPrefEdits")
     public AbsSharePrefer(@NonNull Context context, @NonNull String shareName) {
         sharedPreferences = context.getSharedPreferences(shareName, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
