@@ -44,18 +44,20 @@ public class MainActivity extends AppCompatActivity {
                LogUtils.e("以获取相应权限，无需申请");
                 return;
             }
-            PermissionRequest request = new PermissionRequest(this);
-            request.requestPermissions(Manifest.permission.READ_EXTERNAL_STORAGE);
-            request.setOnRequestCallBack(new OnPermissionCallback() {
-                @Override
-                public void onRequest(boolean granted, @Nullable String[] reRequest) {
-                    if (granted) {
-                        ToastUtils.showShort(MainActivity.this, "申请权限成功");
-                    } else {
-                        ToastUtils.showShort(MainActivity.this, "申请权限失败");
-                    }
-                }
-            });
+            PermissionRequest request = new PermissionRequest.Builder(this)
+                    .addPermissions(Manifest.permission.READ_EXTERNAL_STORAGE)
+                    .setCallback(new OnPermissionCallback() {
+                        @Override
+                        public void onRequest(boolean granted, @Nullable String[] reRequest) {
+                            if (granted) {
+                                ToastUtils.showShort(MainActivity.this, "申请权限成功");
+                            } else {
+                                ToastUtils.showShort(MainActivity.this, "申请权限失败");
+                            }
+                        }
+                    })
+                    .build();
+            request.requestPermissions();
         }
     }
 
