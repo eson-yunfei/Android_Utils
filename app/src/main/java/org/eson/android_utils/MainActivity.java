@@ -14,9 +14,6 @@ import com.shon.permissions.PermissionRequest;
 
 import org.eson.log.LogUtils;
 import org.eson.toast.ToastUtils;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
         LogUtils.init("Main");
         LogUtils.e("test_log");
 
+        AppExecutors.getInstance().mainThread().executeDelay(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        },1_000);
         testGson2();
 //        testGsonUtil();
     }
