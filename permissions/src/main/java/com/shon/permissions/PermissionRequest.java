@@ -63,6 +63,7 @@ public class PermissionRequest {
     }
 
     private void addPermissions(String... permissions) {
+        checkList();
         for (String permission : permissions) {
             addPermissionToList(permission);
         }
