@@ -36,10 +36,16 @@ public class PermissionFragment extends Fragment {
     @TargetApi(Build.VERSION_CODES.M)
     void requestPermissions(@NonNull String[] permissions) {
 
+        //检查权限，
+        // 避免重复申请，加载 fragment，
+        // 造成 原来 activity或者 fragment 的生命周期 的重复调用
         PermissionCheck.hasPerMissions(getActivity(), permissions,
                 onPermissionCallback);
     }
 
+    /**
+     *
+     */
     private OnPermissionCallback onPermissionCallback = new OnPermissionCallback() {
         @Override
         public void onRequest(@NonNull boolean granted, @Nullable String[] reRequest) {
@@ -67,10 +73,11 @@ public class PermissionFragment extends Fragment {
     }
 
     /**
+     * 申请结果处理
      *
-     * @param permissions
-     * @param grantResults
-     * @param shouldShowRequestPermissionRationale
+     * @param permissions                          permissions
+     * @param grantResults                         grantResults
+     * @param shouldShowRequestPermissionRationale shouldShowRequestPermissionRationale //需要详细说明的
      */
     private void onRequestPermissionsResult(String[] permissions, int[] grantResults, boolean[] shouldShowRequestPermissionRationale) {
         ArrayList<Boolean> grantedArray = new ArrayList<>();
@@ -85,9 +92,9 @@ public class PermissionFragment extends Fragment {
             return;
         }
         if (grantedArray.size() == grantResults.length) {
-            permissionCallback.onRequest(true,null);
+            permissionCallback.onRequest(true, null);
         } else {
-            permissionCallback.onRequest(false,null);
+            permissionCallback.onRequest(false, null);
         }
     }
 
