@@ -1,6 +1,7 @@
 package org.eson.slog.printer.file
 
 import org.eson.slog.SLogBean
+import org.eson.slog.SLogManager
 import java.io.BufferedWriter
 import java.io.File
 import java.io.FileWriter
@@ -15,7 +16,7 @@ internal class LogWriter(private val savePath: String) {
 
     fun writerLog(sLogBean: SLogBean) {
         preFileName ?: kotlin.run {
-            val fileName = genFileName()
+            val fileName = SLogManager.sLogManager.genLogFileName()
             closeBuffer()
             if (!createLogFile(fileName)) {
                 return
@@ -82,10 +83,6 @@ internal class LogWriter(private val savePath: String) {
         }
     }
 
-    private fun genFileName(): String {
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
-        sdf.timeZone = TimeZone.getDefault()
-        return sdf.format(Date(System.currentTimeMillis())) + ".txt"
-    }
+
 
 }

@@ -5,6 +5,8 @@ import org.eson.slog.formatter.ThreadFormatter
 import org.eson.slog.printer.ConsolePrinter
 import org.eson.slog.printer.SLogPrinter
 import org.eson.slog.printer.view.SLogViewPrinter
+import java.text.SimpleDateFormat
+import java.util.*
 
 class SLogManager {
 
@@ -30,11 +32,18 @@ class SLogManager {
         slicingConfig.addPrinter(*printer)
     }
 
-    internal fun getPrinterByTag(tag:String):SLogViewPrinter?{
+    internal fun getPrinterByTag(tag: String): SLogViewPrinter? {
         return slicingConfig.getPrinterByTag(tag)
     }
+
     fun removePrinter(printer: SLogPrinter) {
         slicingConfig.removePrinter(printer)
+    }
+
+    fun genLogFileName(): String {
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.CHINA)
+        sdf.timeZone = TimeZone.getDefault()
+        return sdf.format(Date(System.currentTimeMillis())) + ".txt"
     }
 
 }
