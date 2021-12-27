@@ -22,10 +22,8 @@ public class PermissionFragment extends Fragment {
     private static final int PERMISSIONS_REQUEST_CODE = 88;
     private OnPermissionCallback permissionCallback;
 
-    private String TAG = PermissionFragment.class.getSimpleName();
+    private final String TAG = PermissionFragment.class.getSimpleName();
 
-    PermissionFragment() {
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,7 +44,7 @@ public class PermissionFragment extends Fragment {
     /**
      *
      */
-    private OnPermissionCallback onPermissionCallback = new OnPermissionCallback() {
+    private final OnPermissionCallback onPermissionCallback = new OnPermissionCallback() {
         @Override
         public void onRequest(@NonNull boolean granted, @Nullable String[] reRequest) {
             if (granted || reRequest == null) {

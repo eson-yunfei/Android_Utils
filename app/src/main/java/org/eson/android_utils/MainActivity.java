@@ -3,6 +3,7 @@ package org.eson.android_utils;
 import android.Manifest;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +14,8 @@ import com.shon.permissions.PermissionCheck;
 import com.shon.permissions.PermissionRequest;
 
 import org.eson.log.LogUtils;
-import org.eson.toast.ToastUtils;
+import org.eson.slog.SLog;
+import org.eson.toast.ToastX;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,17 +28,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        LogUtils.init("Main");
-        LogUtils.e("test_log");
+        SLog.Companion.d("MainActivity onCreate");
+        SLog.Companion.dd("MainActivity"," test log");
 
-        AppExecutors.getInstance().mainThread().executeDelay(new Runnable() {
+        findViewById(R.id.showToast).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
+            public void onClick(View v) {
 
+                int value = (int) (Math.random() *100);
+
+                ToastX.getInstance().showShort("value = "+value);
             }
-        },1_000);
-        testGson2();
-//        testGsonUtil();
+        });
+
+        findViewById(R.id.showLongToast).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int value = (int) (Math.random() *100);
+
+                ToastX.getInstance().showLong("long toast value = "+value);
+            }
+        });
+
     }
 
     private void testGson2() {
@@ -93,9 +106,9 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onRequest(boolean granted, @Nullable String[] reRequest) {
                             if (granted) {
-                                ToastUtils.showShort(MainActivity.this, "申请权限成功");
+                                ToastX.getInstance().showShort( "申请权限成功");
                             } else {
-                                ToastUtils.showShort(MainActivity.this, "申请权限失败");
+                                ToastX.getInstance().showShort( "申请权限失败");
                             }
                         }
                     })

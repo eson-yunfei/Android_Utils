@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
 import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
@@ -20,7 +19,7 @@ import java.util.List;
  */
 public class PermissionCheck {
 
-    private static String TAG = PermissionCheck.class.getSimpleName();
+    private static final String TAG = PermissionCheck.class.getSimpleName();
 
     /**
      * 对单一权限检查
