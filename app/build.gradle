@@ -35,7 +35,6 @@ ext{
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(path: ':gson')
     implementation 'androidx.appcompat:appcompat:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
     implementation 'com.google.android.material:material:1.12.0'
@@ -43,11 +42,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation project(':toast')
-    implementation project(':time')
-    implementation project(':fille')
-    implementation project(':encoding')
+    implementation project(':gson')
     implementation project(':slog')
-
+//    implementation "com.github.eson-yunfei.Android_Utils:slog:0.2.1"
 }
 
