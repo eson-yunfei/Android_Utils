@@ -1,5 +1,9 @@
 apply from: "../lib_common.gradle"
 
+android{
+    namespace "org.eson.sharepre"
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 

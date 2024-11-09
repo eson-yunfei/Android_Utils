@@ -2,21 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.eson.android_utils.MainActivity">
+    tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/showToast"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="show short  Toast"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/showLongToast"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="show long  Toast"
-        app:layout_constraintTop_toBottomOf="@id/showToast"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

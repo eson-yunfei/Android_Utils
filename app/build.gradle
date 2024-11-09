@@ -1,11 +1,13 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
 
 android {
-    compileSdkVersion 31
+    namespace "org.eson.android_utils"
+    compileSdkVersion 35
     defaultConfig {
         applicationId "org.eson.android_utils"
         minSdkVersion 24
-        targetSdkVersion 31
+        targetSdkVersion 35
         versionCode 3
         versionName "0.1.7"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -18,12 +20,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
-//    kotlinOptions {
-//        jvmTarget = '1.8'
-//    }
+    kotlinOptions {
+        jvmTarget = '17'
+    }
 }
 
 ext{
@@ -34,23 +36,17 @@ ext{
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(path: ':gson')
-    implementation 'androidx.appcompat:appcompat:1.4.0'
-    implementation project(path: ':permissions')
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'androidx.activity:activity:1.9.3'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation project(':toast')
-    implementation project(':log')
-    //    implementation "com.github.eson-yunfei.Android_Utils:log:$lib_version"
-    //    implementation "com.github.eson-yunfei.Android_Utils:toast:$lib_version"
-
-//    implementation "com.github.eson-yunfei.Android_Utils:permissions:$lib_version"
     implementation project(':time')
     implementation project(':fille')
-    implementation project(':navigate')
     implementation project(':encoding')
-    implementation project(':share')
     implementation project(':slog')
 
 }

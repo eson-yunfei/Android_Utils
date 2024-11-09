@@ -1,5 +1,11 @@
 apply from: "../lib_common.gradle"
+
+android{
+    namespace "org.shon.gson"
+}
+
+
 dependencies {
 
-    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.code.gson:gson:2.11.0'
 }

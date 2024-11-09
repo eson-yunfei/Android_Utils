@@ -1,5 +1,10 @@
 apply from: "../lib_common.gradle"
 
+android{
+    namespace "org.eson.toast"
+}
+
+
 repositories {
     mavenCentral()
 }

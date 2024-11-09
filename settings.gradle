@@ -1,4 +1,4 @@
-include ':permissions'
+//include ':permissions'
 include ':gson'
-include ':app', ':toast', ':log', ':time', ':navigate', ':fille', ':encoding', ':share'
+include ':app', ':toast',  ':time', ':fille', ':encoding'
 include ':slog'
